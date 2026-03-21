@@ -1,0 +1,986 @@
+/* Variables y Reset */
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-light: #eff6ff;
+    --text-dark: #1e293b;
+    --text-medium: #64748b;
+    --text-light: #94a3b8;
+    --border-color: #e2e8f0;
+    --bg-white: #ffffff;
+    --bg-light: #f8fafc;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Contenedor Principal */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    width: 100%;
+    background: var(--bg-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    min-height: 700px;
+}
+
+/* Panel Izquierdo */
+.left-panel {
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-color);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.brand-name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -0.02em;
+}
+
+.tagline {
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+.hero-image {
+    width: 100%;
+    height: 490px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.1) 0%, transparent 50%);
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.hero-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Características Cuadrícula */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.feature-card {
+    background: var(--bg-white);
+    padding: 20px 30px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    font-size: 24px;
+    color: #f59e0b;
+}
+
+.feature-icon.wrench {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    color: #6b7280;
+}
+
+.feature-icon.bolt {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    color: var(--primary-color);
+}
+
+.feature-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.3;
+}
+
+/* Panel Derecho - Formulario */
+.right-panel {
+    padding: 60px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-white);
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.form-subtitle {
+    color: var(--text-medium);
+    margin-bottom: 32px;
+    font-size: 1rem;
+}
+
+/* Formulario */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    color: var(--primary-color);
+    font-size: 1rem;
+    z-index: 1;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 16px 14px 48px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text-dark);
+    background: var(--bg-white);
+    transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.input-wrapper input::placeholder {
+    color: var(--text-light);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+    color: var(--primary-color);
+}
+
+/* Checkbox Términos */
+.terms {
+    margin-top: 8px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-medium);
+}
+
+.checkbox-wrapper input {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-wrapper input:checked + .checkmark {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.checkbox-wrapper input:checked + .checkmark::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: white;
+    font-size: 12px;
+}
+
+.terms-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.terms-link:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Botón Registrar */
+.btn-register {
+    width: 100%;
+    padding: 16px 24px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    margin-top: 8px;
+}
+
+.btn-register:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+}
+
+.btn-register:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    transition: transform 0.3s ease;
+}
+
+.btn-register:hover .btn-icon {
+    transform: translateX(4px);
+}
+
+/* Link Login */
+.login-link {
+    text-align: center;
+    margin-top: 24px;
+    color: var(--text-medium);
+    font-size: 0.95rem;
+}
+
+.link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Botón Ayuda */
+.help-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    background: var(--text-dark);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.help-btn:hover {
+    background: var(--primary-color);
+    transform: scale(1.1) rotate(10deg);
+}
+
+/* Estados de Validación */
+.form-group.error input {
+    border-color: var(--error-color);
+    background-color: #fef2f2;
+}
+
+.form-group.success input {
+    border-color: var(--success-color);
+    background-color: #f0fdf4;
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.85rem;
+    margin-top: 4px;
+    display: none;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+/* Animaciones */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.form-group.error {
+    animation: shake 0.4s ease;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
+    .left-panel {
+        padding: 40px 30px;
+        order: 2;
+    }
+    
+    .right-panel {
+        padding: 40px 30px;
+        order: 1;
+    }
+    
+    .hero-image {
+        height: 200px;
+    }
+    
+    .features {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .brand-name {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+    }
+    
+    .container {
+        border-radius: 0;
+        min-height: 100vh;
+    }
+    
+    .left-panel, .right-panel {
+        padding: 30px 20px;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .feature-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        text-align: left;
+        padding: 16px;
+    }
+    
+    .feature-icon {
+        margin: 0;
+    }
+    
+    .form-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Estado de carga */
+.btn-register.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn-register.loading .btn-text::after {
+    content: '';
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
+
+/* Success Modal (opcional) */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: white;
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    max-width: 400px;
+    margin: 20px;
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1);
+}
+
+.modal-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--success-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin: 0 auto 24px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.modal-text {
+    color: var(--text-medium);
+    margin-bottom: 24px;
+}
+
+.btn-modal {
+    padding: 12px 32px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-modal:hover {
+    background: var(--primary-hover);
+}
+
+/* ===== ESTILOS NUEVOS PARA SELECTS/DESPLEGABLES ===== */
+
+/* Estilo base para selects */
+.input-wrapper select {
+    width: 100%;
+    padding: 14px 40px 14px 48px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text-dark);
+    background: var(--bg-white);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Estado focus del select */
+.input-wrapper select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* Color del placeholder (opción disabled) */
+.input-wrapper select:required:invalid {
+    color: var(--text-light);
+}
+
+/* Opciones del select */
+.input-wrapper select option {
+    color: var(--text-dark);
+    padding: 10px;
+}
+
+/* Opción disabled (placeholder) */
+.input-wrapper select option:disabled {
+    color: var(--text-light);
+}
+
+/* Flecha personalizada del select */
+.select-arrow {
+    position: absolute;
+    right: 16px;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+/* Rotar flecha al abrir */
+.input-wrapper select:focus ~ .select-arrow {
+    transform: rotate(180deg);
+}
+
+/* Estados de validación para selects */
+.form-group.error select {
+    border-color: var(--error-color);
+    background-color: #fef2f2;
+}
+
+.form-group.success select {
+    border-color: var(--success-color);
+    background-color: #f0fdf4;
+}
+
+/* Responsive para selects */
+@media (max-width: 480px) {
+    .input-wrapper select {
+        font-size: 16px;
+    }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #dce9f7, #e8f4ff);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ── CARD ── */
+.card {
+  background: white;
+  border-radius: 24px;
+  display: flex;
+  width: 900px;
+  max-width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* ── LEFT PANEL ── */
+.left {
+  width: 42%;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  background: #1a5cff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
+}
+
+.brand-info h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a5cff;
+  line-height: 1;
+}
+
+.brand-info p {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.robot-box {
+  background: linear-gradient(160deg, #f0f4ff, #e8ecf8);
+  border-radius: 16px;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.features {
+  display: flex;
+  gap: 10px;
+}
+
+.feat {
+  flex: 1;
+  border: 1.5px solid #e8ecf4;
+  border-radius: 14px;
+  padding: 14px 8px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.feat:hover {
+  border-color: #1a5cff;
+}
+
+.feat-icon {
+  width: 38px;
+  height: 38px;
+  background: #fff8e1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 6px;
+  font-size: 18px;
+}
+
+.feat p {
+  font-size: 11px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+}
+
+/* ── RIGHT PANEL ── */
+.right {
+  flex: 1;
+  padding: 32px 36px;
+  border-left: 1px solid #f0f0f0;
+}
+
+.right h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+/* ── FORM GROUPS ── */
+.fg {
+  margin-bottom: 14px;
+}
+
+.fg > label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.iw {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.iw .ic {
+  position: absolute;
+  left: 12px;
+  color: #1a5cff;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.iw input {
+  width: 100%;
+  padding: 11px 12px 11px 36px;
+  border: 1.5px solid #dde3f0;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #444;
+  outline: none;
+  transition: border-color 0.2s;
+  background: white;
+}
+
+.iw input:focus {
+  border-color: #1a5cff;
+}
+
+.iw input::placeholder {
+  color: #bbb;
+}
+
+.eye {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  font-size: 15px;
+}
+
+/* ── DATE BOX ── */
+.date-box {
+  border: 1.5px solid #dde3f0;
+  border-radius: 14px;
+  padding: 16px 18px;
+  background: #fafbff;
+}
+
+.date-box .hint {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.date-row {
+  display: flex;
+  gap: 10px;
+}
+
+.ds {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ds label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ds select {
+  width: 100%;
+  padding: 9px 28px 9px 10px;
+  border: 1.5px solid #dde3f0;
+  border-radius: 9px;
+  font-size: 13px;
+  color: #444;
+  background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231a5cff' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 9px center;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.ds select:focus {
+  border-color: #1a5cff;
+}
+
+/* ── TERMS & BUTTON ── */
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 14px;
+}
+
+.terms input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: #1a5cff;
+  cursor: pointer;
+}
+
+.terms label {
+  font-size: 13px;
+  color: #555;
+}
+
+.terms a {
+  color: #1a5cff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn {
+  width: 100%;
+  padding: 13px;
+  background: #1a5cff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  background: #0f46e0;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #888;
+}
+
+.login-link a {
+  color: #1a5cff;
+  text-decoration: none;
+  font-weight: 600;
+}
